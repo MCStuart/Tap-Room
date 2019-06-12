@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Beer } from './beers/models/beers.model';
-import { BEERS } from './beers/beers.model.mock';
+// import { BEERS } from './beers/beers.model.mock';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +11,17 @@ import { MessageService } from './message.service';
 
 export class BeerService {
 
+  private beersUrl = 'api/beers'; 
+
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService) { }
+
   getBeers(): Observable<Beer[]> {
-    this.messageService.add('BeerService: fetched beers');
-    return of(BEERS);
+    // this.messageService.add('BeerService: fetched beers');
+    // return of(BEERS);
+    return this.http.get<Beer[]>(this.beersUrl)
+    
   }
 
   getBeer(tapNum: number): Observable<Beer> {
@@ -21,6 +30,9 @@ export class BeerService {
     return of(BEERS.find(beer => beer.tapNum === tapNum));
   }
 
-  constructor( private messageService: MessageService) {}
 
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
+  }
 }
