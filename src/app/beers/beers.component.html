@@ -1,7 +1,9 @@
 <h2>Beer List</h2>
 <ul class="beers">
-  <li *ngFor="let beer of beers" (click)="onSelect(beer)" [class.selected]="beer === selectedBeer">
-      <span class="plaque">{{beer.tapNum}}</span>{{beer.breweryName}} {{beer.beerName}} {{beer.ABV}}% {{beer.style}} ${{beer.price}}
+  <li *ngFor="let beer of beers">
+      <a routerLink="/detail/{{beer.tapNum}}">
+        <span class="plaque">{{beer.tapNum}}</span>{{beer.breweryName}} {{beer.beerName}} {{beer.ABV}}% {{beer.style}} ${{beer.price}}  
+      </a>
   </li>
 </ul>
 

@@ -15,6 +15,12 @@ export class BeerService {
     return of(BEERS);
   }
 
+  getBeer(tapNum: number): Observable<Beer> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`BeerService: fetched beer tapNum=${tapNum}`);
+    return of(BEERS.find(beer => beer.tapNum === tapNum));
+  }
+
   constructor( private messageService: MessageService) {}
 
 }

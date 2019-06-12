@@ -13,12 +13,6 @@ export class BeersComponent implements OnInit {
   
   beers: Beer[];
 
-  selectedBeer: Beer;
-  onSelect(beer: Beer): void {
-    this.selectedBeer = beer;
-    console.log(this.selectedBeer.beerName);
-  }
-
   getBeers(): void {
     this.beerService.getBeers()
       .subscribe(beers => this.beers = beers);
