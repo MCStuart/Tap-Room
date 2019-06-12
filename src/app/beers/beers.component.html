@@ -1,3 +1,12 @@
-<p>
-  beers works!
-</p>
+<h2>Beer List</h2>
+<ul>
+  <li *ngFor="let beer of beers">
+    <ul>
+      <li>{{beer.breweryName}}</li>
+      <li>{{beer.beerName}}</li>
+      <li>{{beer.ABV}}</li>
+      <li>{{beer.style}}</li>
+      <li>{{beer.price}}</li>
+    </ul>
+  </li>
+</ul>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Beer } from './models/beers.model';
+import { BEERS} from './beers.model.mock'
 
 @Component({
   selector: 'app-beers',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeersComponent implements OnInit {
 
+  beers = BEERS;
   constructor() { }
 
   ngOnInit() {

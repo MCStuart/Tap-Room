@@ -1,17 +1,17 @@
 export class Beer {
-    onTap: boolean;
-    breweryName: string;
-    beerName: string;
-    ABV: string;
-    style: string;
-    price: number;
+    constructor(
+    public breweryName: string,
+    public beerName: string,
+    public ABV: string,
+    public style: string,
+    public price: number) {}
+    
+    onTap: boolean = true;
     kegSize: number = 124;
     pintsLeft: number = this.kegSize;
-    bgURL: string;
-
+    public bgURL: string = "default";
 
     sellPint() {}
     sellGrowler() {}
     sellLargeGrowler() {}
-
 }
