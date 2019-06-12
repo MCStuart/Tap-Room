@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Beer } from './beers/models/beers.model';
 import { BEERS } from './beers/beers.model.mock';
+import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +10,11 @@ import { BEERS } from './beers/beers.model.mock';
 
 export class BeerService {
 
-  getBeers(): Beer[] {
-    return BEERS;
+  getBeers(): Observable<Beer[]> {
+    this.messageService.add('BeerService: fetched beers');
+    return of(BEERS);
   }
 
-  constructor() { }
+  constructor( private messageService: MessageService) {}
 
 }

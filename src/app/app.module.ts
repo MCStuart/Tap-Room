@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BeersComponent } from './beers/beers.component';
 import { BeerDetailComponent } from './beer-detail/beer-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BeersComponent,
-    BeerDetailComponent
+    BeerDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
