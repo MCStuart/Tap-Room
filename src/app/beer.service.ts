@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Beer } from './beers/models/beers.model';
 import { Observable, of } from 'rxjs';
-import { MessageService } from './message.service';
+// import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -18,8 +18,10 @@ export class BeerService {
   private beersUrl = 'api/beers'; 
 
   constructor(
-    private http: HttpClient,
-    private messageService: MessageService) { }
+    private http: HttpClient
+    // ,
+    // private messageService: MessageService
+    ) { }
 
   getBeers(): Observable<Beer[]> {
     return this.http.get<Beer[]>(this.beersUrl)
@@ -33,16 +35,16 @@ export class BeerService {
 getBeer(id: number): Observable<Beer> {
   const url = `${this.beersUrl}/${id}`;
   return this.http.get<Beer>(url).pipe(
-    tap(_ => this.log(`fetched Beer id=${id}`)),
+    // tap(_ => this.log(`fetched Beer id=${id}`)),
     catchError(this.handleError<Beer>(`getBeer id=${id}`))
   );
 }
 
 
   /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
-  }
+  // private log(message: string) {
+  //   this.messageService.add(`HeroService: ${message}`);
+  // }
 
   /**
    * Handle Http operation that failed.
@@ -57,7 +59,7 @@ getBeer(id: number): Observable<Beer> {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      // this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -67,7 +69,7 @@ getBeer(id: number): Observable<Beer> {
     /** PUT: update the beer on the server */
   updateBeer (beer: Beer): Observable<any> {
     return this.http.put(this.beersUrl, beer, httpOptions).pipe(
-      tap(_ => this.log(`updated beer id=${beer.id}`)),
+      // tap(_ => this.log(`updated beer id=${beer.id}`)),
       catchError(this.handleError<any>('updateBeer'))
     );
   }
@@ -77,10 +79,22 @@ getBeer(id: number): Observable<Beer> {
     console.log("inside addbeer");
     
     return this.http.post<Beer>(this.beersUrl, beer, httpOptions).pipe(
-      tap((newBeer: Beer) => this.log(`added beer w/ id=${newBeer.id}`)),
+      // tap((newBeer: Beer) => this.log(`added beer w/ id=${newBeer.id}`)),
       catchError(this.handleError<Beer>('addBeer'))
     );
+  }
+
+  /** DELETE: delete the hero from the server */
+  deleteBeer(beer: Beer | number): Observable<Beer> {
+    const id = typeof beer === 'number' ? beer : beer.id;
+    const url = `${this.beersUrl}/${id}`;
+
+    return this.http.delete<Beer>(url, httpOptions).pipe(
+      // tap(_ => this.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Beer>('deleteHero'))
+    );
 }
+
 
 }
 

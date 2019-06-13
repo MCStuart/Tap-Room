@@ -13,7 +13,14 @@ export class Beer {
     pintsLeft: number = this.kegSize;
     public bgURL: string = "default";
 
-    sellPint() {}
-    sellGrowler() {}
-    sellLargeGrowler() {}
+    sellPint() {
+        if (this.pintsLeft > 0) {
+            this.pintsLeft -= 1;
+        } else {
+            // hide sell button              
+        }
+    }
+
+
+
 }

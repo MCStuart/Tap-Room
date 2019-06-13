@@ -38,4 +38,9 @@ export class BeersComponent implements OnInit {
       });
   }
 
+  delete(beer: Beer): void {
+    this.beers = this.beers.filter(h => h !== beer);
+    this.beerService.deleteBeer(beer).subscribe();
+  }
+
 }

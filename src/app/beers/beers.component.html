@@ -4,6 +4,7 @@
       <a routerLink="/detail/{{beer.id}}">
         <span class="plaque">{{beer.id}}</span>{{beer.breweryName}} {{beer.beerName}} {{beer.ABV}}% {{beer.style}} ${{beer.price}}  
       </a>
+      <button class="delete" title="delete beer" (click)="delete(beer)">x</button>
   </li>
 </ul>
 
