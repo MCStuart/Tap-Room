@@ -9,8 +9,9 @@ export class Beer {
     public tapNum: number,
     public id: number) {}
     
-    kegSize: number = 124;
-    pintsLeft: number = this.kegSize;
+    public onTap: true
+    // kegSize: number = 124;
+    pintsLeft: number = 124;
     public bgURL: string = "default";
 
     sellPint() {

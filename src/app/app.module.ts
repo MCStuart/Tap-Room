@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { TapListComponent } from './tap-list/tap-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     BeersComponent,
     BeerDetailComponent,
     // MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    TapListComponent
   ],
   imports: [
     HttpClientModule,

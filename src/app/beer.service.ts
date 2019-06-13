@@ -95,6 +95,10 @@ getBeer(id: number): Observable<Beer> {
     );
 }
 
+updatePintsLeft(beer: Beer) {
+  return this.http.put(this.beersUrl, beer, httpOptions);
+}
+
 
 }
 

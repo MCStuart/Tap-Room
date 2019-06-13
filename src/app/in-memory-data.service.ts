@@ -10,9 +10,9 @@ export class InMemoryDataService implements InMemoryDbService {
   // private beersUrl = 'api/beers';  // URL to web api
   createDb() {
     const beers = [
-      { breweryName: "BoneYard", beerName: "RPM", ABV: "6.2", style: "IPA", price: 6, tapNum: 1, id:  0},
-      { breweryName: "Deschutes", beerName: "Mirror Pond", ABV: "5.5", style: "Pale", price: 6, tapNum: 2, id: 1 },
-      { breweryName: "Pabst", beerName: "Blue Ribbon", ABV: "4.3", style: "Lager", price: 2, tapNum: 3, id: 2 }
+      { breweryName: "BoneYard", beerName: "RPM", ABV: "6.2", style: "IPA", price: 6, tapNum: 1, id:  0, onTap: true, pintsLeft: 124},
+      { breweryName: "Deschutes", beerName: "Mirror Pond", ABV: "5.5", style: "Pale", price: 6, tapNum: 2, id: 1, pintsLeft: 124 , onTap: true},
+      { breweryName: "Pabst", beerName: "Blue Ribbon", ABV: "4.3", style: "Lager", price: 2, tapNum: 3, id: 2, onTap: true, pintsLeft: 124}
     ]; 
   return {beers};
   }

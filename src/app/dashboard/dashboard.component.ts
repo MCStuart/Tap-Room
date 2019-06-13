@@ -9,6 +9,7 @@ import { BeerService } from '../beer.service';
 })
 export class DashboardComponent implements OnInit {
   beers: Beer[] = [];
+  soldBeer: Beer;
  
   constructor(private beerService: BeerService) { }
  
@@ -18,6 +19,26 @@ export class DashboardComponent implements OnInit {
  
   getBeers(): void {
     this.beerService.getBeers()
-      .subscribe(beers => this.beers = beers.slice(0));
+      .subscribe(beers => this.beers = beers);
   }
+
+  sellPint(beer: Beer): void{
+    console.log("clicked");
+    console.log(beer.pintsLeft);
+   this.beerService.getBeer(beer.id).subscribe(beer => this.soldBeer = beer);
+   this.soldBeer.pintsLeft--;
+   this.beerService.updateBeer(this.soldBeer);
+    // this.beerService.updatePintsLeft(beer);
+  }
+
+  // save(): void {
+  //   this.beerService.updateBeer(this.beer)
+  //   .subscribe(() => this.goBack());
+  // }
+
+  // getBeer(): void {
+  //   const id = +this.route.snapshot.paramMap.get('id');
+  //   this.beerService.getBeer(id)
+  //     .subscribe(beer => this.beer = beer);
+  // }
 }

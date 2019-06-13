@@ -1,0 +1,10 @@
+<h2>Beer List</h2>
+<ul class="beers">
+    <li *ngFor="let beer of beers">
+      
+          <span class="plaque" [class]="abvColor(beer.ABV)">{{beer.id}}</span> <div><p>{{beer.breweryName}} {{beer.beerName}} {{beer.ABV}}% {{beer.style}}</p><p>Pints Left: {{beer.pintsLeft}}</p></div><span class="beer-price" [class]="priceColor(beer.price)">${{beer.price}} </span> 
+
+    </li>
+</ul>
+
+<!-- *ngIf=(beer.onTap) -->
