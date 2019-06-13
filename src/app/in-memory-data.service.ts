@@ -12,7 +12,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const beers = [
       { breweryName: "BoneYard", beerName: "RPM", ABV: "6.2", style: "IPA", price: 6, tapNum: 1, id: 1},
       { breweryName: "Deschutes", beerName: "Mirror Pond", ABV: "5.5", style: "Pale", price: 6, tapNum: 2, id: 2 },
-      { breweryName: "BoPabstneYard", beerName: "Blue Ribbon", ABV: "4.3", style: "Lager", price: 2, tapNum: 3, id: 3 }
+      { breweryName: "Pabst", beerName: "Blue Ribbon", ABV: "4.3", style: "Lager", price: 2, tapNum: 3, id: 3 }
     ]; 
   return {beers};
   }

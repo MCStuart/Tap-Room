@@ -22,12 +22,17 @@ export class BeerDetailComponent implements OnInit {
   }
 
   getBeer(): void {
-    const tapNum = +this.route.snapshot.paramMap.get('tapNum');
-    this.beerService.getBeer(tapNum)
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.beerService.getBeer(id)
       .subscribe(beer => this.beer = beer);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.beerService.updateBeer(this.beer)
+    .subscribe(() => this.goBack());
   }
 }

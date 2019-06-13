@@ -5,6 +5,10 @@ import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,12 +28,6 @@ export class BeerService {
       );
     
   }
-
-  // getBeer(tapNum: number): Observable<Beer> {
-  //   // TODO: send the message _after_ fetching the hero
-  //   this.messageService.add(`BeerService: fetched beer tapNum=${tapNum}`);
-  //   return of(BEERS.find(beer => beer.tapNum === tapNum));
-  // }
 
   /** GET hero by id. Will 404 if id not found */
 getBeer(id: number): Observable<Beer> {
@@ -65,4 +63,24 @@ getBeer(id: number): Observable<Beer> {
       return of(result as T);
     };
   }
+
+    /** PUT: update the beer on the server */
+  updateBeer (beer: Beer): Observable<any> {
+    return this.http.put(this.beersUrl, beer, httpOptions).pipe(
+      tap(_ => this.log(`updated beer id=${beer.id}`)),
+      catchError(this.handleError<any>('updateBeer'))
+    );
+  }
+
+    /** POST: add a new hero to the server */
+  addBeer (beer: Beer): Observable<Beer> {
+    console.log("inside addbeer");
+    
+    return this.http.post<Beer>(this.beersUrl, beer, httpOptions).pipe(
+      tap((newBeer: Beer) => this.log(`added beer w/ id=${newBeer.id}`)),
+      catchError(this.handleError<Beer>('addBeer'))
+    );
 }
+
+}
+

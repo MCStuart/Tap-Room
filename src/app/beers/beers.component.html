@@ -1,10 +1,51 @@
 <h2>Beer List</h2>
 <ul class="beers">
   <li *ngFor="let beer of beers">
-      <a routerLink="/detail/{{beer.tapNum}}">
-        <span class="plaque">{{beer.tapNum}}</span>{{beer.breweryName}} {{beer.beerName}} {{beer.ABV}}% {{beer.style}} ${{beer.price}}  
+      <a routerLink="/detail/{{beer.id}}">
+        <span class="plaque">{{beer.id}}</span>{{beer.breweryName}} {{beer.beerName}} {{beer.ABV}}% {{beer.style}} ${{beer.price}}  
       </a>
   </li>
 </ul>
 
 <app-beer-detail [beer]="selectedBeer"></app-beer-detail>
+
+<!-- <div>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+  (click) passes input value to add() and then clears the input
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div> -->
+
+<div>
+  <label>Brewery Name:
+    <input #breweryName/>
+  </label>
+  <label>Beer Name:
+    <input #beerName/>
+  </label>
+  <label>ABV:
+    <input #ABV/>
+  </label>
+  <label>Style:
+    <input #style/>
+  </label>
+  <label>Price:
+    <input #price/>
+  </label>
+  <label>Tap Number:
+    <input #tapNum/>
+  </label>
+  <button (click)="add(breweryName.value, beerName.value, ABV.value, style.value, price.value)">
+    add
+  </button>
+</div>
+
+
+      <!-- add(beerName.value); beerName.value='',
+      add(ABV.value); ABV.value='',
+      add(style.value); style.value='',
+      add(price.value); price.value='',
+      add(tapNum.value); tapNum.value='' -->
